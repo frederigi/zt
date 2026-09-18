@@ -1,0 +1,788 @@
+/* ====================================================================
+   ESTILOS GERAIS DO CATÁLOGO DE PAPELARIA PERSONALIZADA
+   Visual Clean, Moderno e Acessível (sem bibliotecas pesadas)
+   ==================================================================== */
+
+:root {
+    /* Paleta de Cores Suaves e Elegantes (Clean para Papelaria) */
+    --cor-fundo: #fcfbfa;
+    --cor-superficie: #ffffff;
+    --cor-texto: #2d3142;
+    --cor-texto-suave: #6b7280;
+    --cor-borda: #ede8e3;
+    
+    /* Cores de Destaque */
+    --cor-primaria: #d9777f;       /* Tom rosé elegante de papelaria */
+    --cor-primaria-hover: #c4646c;
+    --cor-destaque: #e09f3e;       /* Tom dourado para badges e destaques */
+    --cor-sucesso: #2a9d8f;        /* Tom verde para WhatsApp */
+    --cor-sucesso-hover: #218276;
+
+    /* Acessibilidade - Tamanho de Fonte Base */
+    --tamanho-fonte-base: 16px;
+    --raio-borda: 10px;
+    --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --sombra-card: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Modo Alto Contraste (Acessibilidade) */
+body.alto-contraste {
+    --cor-fundo: #000000 !important;
+    --cor-superficie: #121212 !important;
+    --cor-texto: #ffff00 !important;       /* Amarelo de alto contraste */
+    --cor-texto-suave: #ffffff !important;
+    --cor-borda: #ffff00 !important;
+    --cor-primaria: #ffff00 !important;
+    --cor-primaria-hover: #e6e600 !important;
+    --cor-destaque: #00ffff !important;
+    --cor-sucesso: #00ff00 !important;
+}
+
+/* Reset basico e tipografia */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: var(--tamanho-fonte-base);
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Container responsivo */
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Barra Superior de Acessibilidade */
+.barra-acessibilidade {
+    background-color: #f3eee9;
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 6px 0;
+    font-size: 0.85rem;
+}
+
+.barra-acessibilidade-conteudo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-acessibilidade {
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 2px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--cor-texto);
+    font-size: 0.85rem;
+}
+
+.btn-acessibilidade:hover,
+.btn-acessibilidade:focus {
+    background-color: #e5ddd5;
+    outline: 2px solid var(--cor-primaria);
+}
+
+/* Cabecalho Principal */
+.cabecalho-principal {
+    background-color: var(--cor-superficie);
+    border-bottom: 1px solid var(--cor-borda);
+    box-shadow: var(--sombra-suave);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.cabecalho-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    gap: 20px;
+}
+
+.logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+}
+
+.logo-imagem {
+    height: 74px;
+    width: 100%;
+    max-width: 780px;
+    aspect-ratio: 6328 / 676;
+    object-fit: contain;
+    object-position: left center;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.logo-imagem:hover {
+    transform: scale(1.008);
+}
+
+/* No modo de alto contraste, inverte as cores do texto preto para ficar legivel no fundo escuro */
+body.alto-contraste .logo-imagem {
+    filter: invert(1) hue-rotate(180deg) brightness(1.3);
+}
+
+.menu-navegacao {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.menu-navegacao a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.menu-navegacao a:hover,
+.menu-navegacao a.ativo {
+    color: var(--cor-primaria);
+    background-color: #fdf5f5;
+}
+
+@media (max-width: 768px) {
+    .cabecalho-conteudo {
+        padding: 8px 0;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .logo-link {
+        width: 100%;
+        justify-content: center;
+    }
+    .logo-imagem {
+        height: 42px;
+        max-width: 100%;
+        object-position: center;
+    }
+    .menu-navegacao a {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+}
+
+/* Conteudo Principal */
+.conteudo-principal {
+    flex: 1;
+    padding: 24px 0 40px;
+}
+
+/* Banner de Boas-Vindas da Zebra de Touca */
+.banner-apresentacao {
+    background: linear-gradient(135deg, #fff9f9 0%, #fef3f4 100%);
+    border: 1px solid #f7dcd9;
+    border-radius: var(--raio-borda);
+    padding: 28px 24px;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.banner-apresentacao h1 {
+    font-size: 1.8rem;
+    color: var(--cor-primaria-hover);
+    margin-bottom: 8px;
+}
+
+.banner-apresentacao p {
+    color: var(--cor-texto-suave);
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+/* Barra de Filtros e Busca (Estilo Pastas de Trabalho) */
+.secao-filtros {
+    margin-bottom: 30px;
+}
+
+.barra-pesquisa-form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+.campo-busca {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background-color: var(--cor-superficie);
+    color: var(--cor-texto);
+}
+
+.campo-busca:focus {
+    outline: 2px solid var(--cor-primaria);
+    border-color: transparent;
+}
+
+.btn-buscar {
+    background-color: var(--cor-primaria);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-buscar:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* Abas de Categorias (tipo pastas de arquivo) */
+.abas-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    list-style: none;
+    margin-top: 15px;
+}
+
+.aba-item a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    color: var(--cor-texto);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.aba-item a:hover {
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+
+.aba-item a.ativa {
+    background-color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #ffffff;
+}
+
+.contador-badge {
+    background: rgba(0, 0, 0, 0.08);
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+}
+
+.aba-item a.ativa .contador-badge {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+/* Grade de Produtos (Responsiva) */
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 10px;
+}
+
+/* Card do Produto */
+.card-produto {
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    overflow: hidden;
+    box-shadow: var(--sombra-suave);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+
+.card-produto:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-card);
+}
+
+.card-imagem-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background-color: #f3f0ec;
+    overflow: hidden;
+}
+
+.card-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card-produto:hover .card-imagem {
+    transform: scale(1.03);
+}
+
+/* Etiquetas e Selos de Destaque */
+.selo-destaque {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 14px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.selo-mais-vendido {
+    background-color: #e09f3e;
+    color: #ffffff;
+}
+
+.selo-lancamento {
+    background-color: #2a9d8f;
+    color: #ffffff;
+}
+
+.selo-destaque-geral {
+    background-color: #9d4edd;
+    color: #ffffff;
+}
+
+/* Corpo do Card */
+.card-corpo {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-categoria {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.card-titulo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.3;
+    color: var(--cor-texto);
+}
+
+.card-tamanho {
+    font-size: 0.85rem;
+    color: var(--cor-texto-suave);
+    margin-bottom: 14px;
+}
+
+.card-rodape {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--cor-borda);
+    padding-top: 12px;
+}
+
+.card-preco-label {
+    font-size: 0.75rem;
+    color: var(--cor-texto-suave);
+    display: block;
+}
+
+.card-preco-valor {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--cor-texto);
+}
+
+.btn-ver-detalhes {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.btn-ver-detalhes:hover {
+    background-color: var(--cor-primaria-hover);
+}
+
+/* Estado de busca sem resultados */
+.sem-resultados {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--cor-superficie);
+    border: 1px dashed var(--cor-borda);
+    border-radius: var(--raio-borda);
+    grid-column: 1 / -1;
+}
+
+.sem-resultados h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--cor-texto);
+}
+
+.sem-resultados p {
+    color: var(--cor-texto-suave);
+    margin-bottom: 16px;
+}
+
+/* ====================================================================
+   PÁGINA DE DETALHES DO PRODUTO E CALCULADORA
+   ==================================================================== */
+
+.migalhas-pao {
+    display: flex;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--cor-texto-suave);
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.migalhas-pao a {
+    color: var(--cor-texto-suave);
+    text-decoration: none;
+}
+
+.migalhas-pao a:hover {
+    color: var(--cor-primaria);
+}
+
+/* Layout em duas colunas para o produto */
+.detalhe-produto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 36px;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .detalhe-produto-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+/* Galeria de Fotos */
+.galeria-fotos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.foto-destaque-container {
+    width: 100%;
+    height: 380px;
+    background-color: #f6f3ef;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--sombra-suave);
+}
+
+.foto-destaque-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.miniaturas-lista {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+}
+
+.miniatura-item {
+    width: 76px;
+    height: 76px;
+    border-radius: 8px;
+    border: 2px solid var(--cor-borda);
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #f6f3ef;
+    flex-shrink: 0;
+    transition: all 0.2s;
+}
+
+.miniatura-item:hover,
+.miniatura-item:focus {
+    border-color: var(--cor-primaria);
+    outline: none;
+}
+
+.miniatura-item.ativa {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 2px rgba(217, 119, 127, 0.3);
+}
+
+.miniatura-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Informações do Produto */
+.produto-info-header {
+    margin-bottom: 18px;
+}
+
+.produto-info-categoria {
+    font-size: 0.85rem;
+    color: var(--cor-primaria);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.produto-info-titulo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 6px 0 10px;
+    color: var(--cor-texto);
+    line-height: 1.25;
+}
+
+.produto-tamanho-destaque {
+    background-color: #fdf5f5;
+    border-left: 4px solid var(--cor-primaria);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--cor-texto);
+    margin-bottom: 16px;
+}
+
+.produto-descricao-texto {
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* Bloco da Calculadora de Orçamento */
+.card-calculadora {
+    background-color: #ffffff;
+    border: 2px solid #f2ddd8;
+    border-radius: var(--raio-borda);
+    padding: 22px;
+    box-shadow: var(--sombra-suave);
+    margin-top: 10px;
+}
+
+.card-calculadora h3 {
+    font-size: 1.2rem;
+    color: var(--cor-primaria-hover);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card-calculadora p.subtitulo-calculadora {
+    font-size: 0.85rem;
+    color: var(--cor-texto-suave);
+    margin-bottom: 18px;
+}
+
+.calc-grupo {
+    margin-bottom: 16px;
+}
+
+.calc-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--cor-texto);
+}
+
+/* Controle de Quantidade com Botões */
+.controle-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 160px;
+}
+
+.btn-qtd {
+    width: 38px;
+    height: 38px;
+    background-color: #f3eee9;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cor-texto);
+    transition: background 0.2s;
+}
+
+.btn-qtd:hover {
+    background-color: #e5ddd5;
+}
+
+.input-qtd {
+    width: 60px;
+    height: 38px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+/* Opcionais / Checkboxes */
+.opcionais-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.opcional-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background-color: #faf8f6;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.opcional-item:hover {
+    background-color: #f4eee8;
+}
+
+.opcional-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--cor-primaria);
+    cursor: pointer;
+}
+
+.campo-texto-personalizado {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+/* Resultado do Total Estimado */
+.calc-total-bloco {
+    background-color: #fcf6f3;
+    border: 1px dashed var(--cor-primaria);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 18px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+.total-valor-destaque {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--cor-primaria-hover);
+}
+
+/* Botão do WhatsApp */
+.btn-whatsapp-orcamento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    width: 100%;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp-orcamento:hover {
+    background-color: #1ebc59;
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp-orcamento svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+}
+
+/* Rodape */
+.rodape-principal {
+    background-color: var(--cor-superficie);
+    border-top: 1px solid var(--cor-borda);
+    padding: 24px 0;
+    text-align: center;
+    color: var(--cor-texto-suave);
+    font-size: 0.9rem;
+}
