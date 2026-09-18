@@ -1,0 +1,26 @@
+# Dependencias do Composer
+/vendor/
+
+# Arquivos de configuracao com credenciais sensiveis
+/config/conexao.php
+config/config.local.php
+.env
+prompt.md
+teste_conexao.php
+
+# Fotos enviadas pelos usuarios (mantem apenas a pasta)
+/public/uploads/*
+!/public/uploads/.gitignore
+
+# Script temporario de migracao de fotos do ImgBB
+migrar_imagens.php
+
+# Cache do PHPUnit
+.phpunit.result.cache
+
+# Arquivos de sistema operacional e logs
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
+scratch/
