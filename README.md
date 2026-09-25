@@ -218,4 +218,4 @@ Lucas Magno de Oliveira - Polo Araraquara
 
 ## 📄 Licença
 
-Este projeto é desenvolvido para fins exclusivamente educacionais e acadêmicos no âmbito da UNIVESP.
+Este projeto é desenvolvido para fins exclusivamente educacionais e acadêmicos.
