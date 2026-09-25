@@ -1,0 +1,3 @@
+# Ignora todas as imagens enviadas pelos usuarios, mantendo apenas a pasta no git
+*
+!.gitignore

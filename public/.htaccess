@@ -1,0 +1,5 @@
+# Redireciona tudo para o index.php do Slim se o arquivo ou pasta fisica nao existir
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

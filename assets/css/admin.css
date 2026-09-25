@@ -1,0 +1,423 @@
+/* ====================================================================
+   ESTILOS DO PAINEL ADMINISTRATIVO (ADMIN) - ZEBRA DE TOUCA
+   Projeto Integrador - UNIVESP
+   Estilos pensados especialmente para funcionar bem tanto no computador
+   quanto na tela do celular da artesã.
+   ==================================================================== */
+
+:root {
+    --admin-primaria: #7c4dff;
+    --admin-primaria-hover: #651fff;
+    --admin-sucesso: #2e7d32;
+    --admin-perigo: #d32f2f;
+    --admin-alerta: #ed6c02;
+    --admin-fundo: #f4f6f9;
+    --admin-card: #ffffff;
+    --admin-texto: #2c3e50;
+    --admin-suave: #6c757d;
+    --admin-borda: #e0e0e0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--admin-fundo);
+    color: var(--admin-texto);
+    line-height: 1.5;
+}
+
+/* -------------------------------------------------------------
+   TOPO E BARRA DE NAVEGAÇÃO
+   ------------------------------------------------------------- */
+.admin-navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid var(--admin-borda);
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+
+.admin-nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.admin-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--admin-primaria);
+}
+
+.admin-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.admin-menu a {
+    text-decoration: none;
+    color: var(--admin-texto);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.admin-menu a:hover,
+.admin-menu a.ativo {
+    background-color: #ede7f6;
+    color: var(--admin-primaria);
+}
+
+.badge-superadmin {
+    background: #ffecb3;
+    color: #b78103;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* -------------------------------------------------------------
+   CONTEÚDO PRINCIPAL
+   ------------------------------------------------------------- */
+.admin-conteudo {
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+.admin-header-pagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.admin-header-pagina h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+/* -------------------------------------------------------------
+   CARDS DE INDICADORES (DASHBOARD)
+   ------------------------------------------------------------- */
+.grid-indicadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.card-indicador {
+    background: var(--admin-card);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--admin-borda);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icone-indicador {
+    font-size: 2.2rem;
+    background: #f3e5f5;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.info-indicador h3 {
+    font-size: 0.85rem;
+    color: var(--admin-suave);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.info-indicador .valor {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--admin-texto);
+}
+
+/* -------------------------------------------------------------
+   TABELAS E CARDS DE LISTAGEM
+   ------------------------------------------------------------- */
+.card-painel {
+    background: var(--admin-card);
+    border-radius: 12px;
+    border: 1px solid var(--admin-borda);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.card-painel-cabecalho {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--admin-borda);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-painel-cabecalho h2 {
+    font-size: 1.15rem;
+}
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.tabela-admin {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+    min-width: 600px;
+}
+
+.tabela-admin th,
+.tabela-admin td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.tabela-admin th {
+    background-color: #fafafa;
+    color: var(--admin-suave);
+    font-weight: 600;
+}
+
+.tabela-admin tr:hover {
+    background-color: #fcfcfc;
+}
+
+.foto-miniatura-tabela {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* -------------------------------------------------------------
+   BOTÕES E AÇÕES
+   ------------------------------------------------------------- */
+.btn-admin {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.1s;
+}
+
+.btn-admin:hover {
+    filter: brightness(0.92);
+}
+
+.btn-admin-primario {
+    background-color: var(--admin-primaria);
+    color: #ffffff;
+}
+
+.btn-admin-sucesso {
+    background-color: var(--admin-sucesso);
+    color: #ffffff;
+}
+
+.btn-admin-perigo {
+    background-color: var(--admin-perigo);
+    color: #ffffff;
+}
+
+.btn-admin-secundario {
+    background-color: #e0e0e0;
+    color: var(--admin-texto);
+}
+
+.btn-admin-sm {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
+/* -------------------------------------------------------------
+   FORMULÁRIOS (CADASTRAR / EDITAR)
+   ------------------------------------------------------------- */
+.form-admin {
+    padding: 24px;
+}
+
+.form-grupo {
+    margin-bottom: 18px;
+}
+
+.form-grupo label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.form-controle {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--admin-borda);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #fafafa;
+}
+
+.form-controle:focus {
+    outline: none;
+    border-color: var(--admin-primaria);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.15);
+}
+
+.form-linha-dupla {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .form-linha-dupla {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------------------------------
+   MENSAGENS DE ALERTA
+   ------------------------------------------------------------- */
+.alerta-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+.alerta-sucesso {
+    background: #e8f5e9;
+    color: var(--admin-sucesso);
+    border: 1px solid #c8e6c9;
+}
+
+.alerta-erro {
+    background: #ffebee;
+    color: var(--admin-perigo);
+    border: 1px solid #ffcdd2;
+}
+
+/* -------------------------------------------------------------
+   GALERIA DE FOTOS (admin/fotos.php)
+   ------------------------------------------------------------- */
+.grid-fotos-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    padding: 20px;
+}
+
+.card-foto-item {
+    background: #ffffff;
+    border: 1px solid var(--admin-borda);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-foto-item img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+}
+
+.card-foto-corpo {
+    padding: 10px;
+    font-size: 0.8rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.badge-capa {
+    background: #ffd700;
+    color: #5c4400;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* -------------------------------------------------------------
+   TELA DE LOGIN
+   ------------------------------------------------------------- */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card-login {
+    background: #ffffff;
+    border: 1px solid var(--admin-borda);
+    border-radius: 14px;
+    padding: 32px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.card-login-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.card-login-header h1 {
+    font-size: 1.4rem;
+    margin-top: 8px;
+    color: var(--admin-primaria);
+}
