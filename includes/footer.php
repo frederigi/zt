@@ -20,5 +20,16 @@
 
     <!-- Script de acessibilidade e interatividade -->
     <script src="assets/js/main.js"></script>
+    <!-- Registro do PWA público; indisponibilidade não interfere no site -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                const serviceWorkerUrl = new URL('service-worker.js', document.baseURI);
+                navigator.serviceWorker.register(serviceWorkerUrl).catch(() => {
+                    // O site continua funcionando normalmente se o registro falhar.
+                });
+            });
+        }
+    </script>
 </body>
 </html>
