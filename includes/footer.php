@@ -15,6 +15,7 @@
             <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.8;">
                 Projeto Integrador II - UNIVESP
             </p>
+            <a href="admin/index.php" class="link-admin-discreto">Área da artesã</a>
         </div>
     </footer>
 

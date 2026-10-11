@@ -165,10 +165,22 @@ body.alto-contraste .logo-imagem {
 }
 
 .menu-navegacao a:hover,
-.menu-navegacao a.ativo {
+.menu-navegacao a.ativo,
+.menu-navegacao a[aria-current="page"] {
     color: var(--cor-primaria);
     background-color: #fdf5f5;
 }
+
+/* Página atual: sublinhado rosa para diferenciar do hover */
+.menu-navegacao a[aria-current="page"] {
+    box-shadow: inset 0 -3px 0 var(--cor-primaria);
+}
+
+.menu-navegacao a:focus-visible {
+    outline: 3px solid var(--cor-primaria);
+    outline-offset: 2px;
+}
+
 
 @media (max-width: 768px) {
     .cabecalho-conteudo {
@@ -785,4 +797,238 @@ body.alto-contraste .logo-imagem {
     text-align: center;
     color: var(--cor-texto-suave);
     font-size: 0.9rem;
+}
+
+/* ---------- Skip link (aparece só ao navegar com Tab) ---------- */
+.skip-link {
+    position: absolute;
+    left: 8px;
+    top: -60px;
+    background: var(--cor-primaria-hover);
+    color: #ffffff;
+    padding: 10px 16px;
+    border-radius: 0 0 8px 8px;
+    z-index: 1000;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* ---------- Link discreto da artesã no rodapé ---------- */
+.link-admin-discreto {
+    font-size: 0.8rem;
+    color: var(--cor-texto-suave);
+    text-decoration: underline;
+}
+
+.link-admin-discreto:hover,
+.link-admin-discreto:focus-visible {
+    color: var(--cor-primaria-hover);
+}
+
+/* ---------- Alto contraste: ajustes do que adicionamos ---------- */
+body.alto-contraste .skip-link {
+    background: var(--cor-primaria);
+    color: #000000;
+}
+
+body.alto-contraste .menu-navegacao a:hover,
+body.alto-contraste .menu-navegacao a[aria-current="page"] {
+    background-color: #000000;
+    outline: 2px solid var(--cor-primaria);
+}
+
+/* ---------- Widget flutuante de acessibilidade ---------- */
+.acessibilidade-widget {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 500;
+}
+
+.acessibilidade-toggle {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    background-color: var(--cor-primaria-hover);
+    color: #ffffff;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: var(--sombra-card);
+    transition: transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.acessibilidade-toggle:hover {
+    transform: scale(1.06);
+}
+
+.acessibilidade-toggle:focus-visible {
+    outline: 3px solid var(--cor-texto);
+    outline-offset: 3px;
+}
+
+.acessibilidade-painel {
+    position: absolute;
+    right: 0;
+    bottom: 80px;
+    width: 240px;
+    background-color: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra-card);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Sem isso o display:flex acima ignora o atributo hidden */
+.acessibilidade-painel[hidden] {
+    display: none;
+}
+
+.acessibilidade-titulo {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--cor-texto);
+}
+
+.acessibilidade-fonte {
+    display: flex;
+    gap: 8px;
+}
+
+.acessibilidade-fonte .btn-acessibilidade {
+    flex: 1;
+    padding: 8px 0;
+    font-size: 1rem;
+}
+
+.btn-contraste {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+}
+
+/* Alto contraste */
+body.alto-contraste .acessibilidade-toggle {
+    background-color: #000000;
+    color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+/* Celular: um pouco menor para não cobrir o conteúdo */
+@media (max-width: 768px) {
+    .acessibilidade-widget {
+        right: 12px;
+        bottom: 12px;
+    }
+    .acessibilidade-toggle {
+        width: 58px;
+        height: 58px;
+        font-size: 1.9rem;
+    }
+}
+
+/* ====================================================================
+   CORREÇÕES DO MODO ALTO CONTRASTE
+   Fundo preto + amarelo, sem texto claro sobre fundo claro
+   ==================================================================== */
+
+/* Banner de boas-vindas (tinha fundo claro fixo) */
+body.alto-contraste .banner-apresentacao {
+    background: #000000;
+    border: 2px solid var(--cor-primaria);
+}
+body.alto-contraste .banner-apresentacao h1 {
+    color: var(--cor-primaria);
+}
+body.alto-contraste .banner-apresentacao p {
+    color: #ffffff;
+}
+
+/* Botões amarelos: texto preto (antes era branco sobre amarelo) */
+body.alto-contraste .btn-buscar,
+body.alto-contraste .btn-ver-detalhes,
+body.alto-contraste .aba-item a.ativa {
+    color: #000000;
+}
+body.alto-contraste .aba-item a.ativa .contador-badge {
+    background: rgba(0, 0, 0, 0.2);
+    color: #000000;
+}
+body.alto-contraste .contador-badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* Imagens: fundo escuro e texto alternativo legível se a foto falhar */
+body.alto-contraste .card-imagem-container,
+body.alto-contraste .foto-destaque-container,
+body.alto-contraste .miniatura-item {
+    background-color: #000000;
+}
+body.alto-contraste .card-imagem,
+body.alto-contraste .foto-destaque-img {
+    color: #ffffff;
+}
+
+/* Selos: fundo preto com borda amarela */
+body.alto-contraste .selo-destaque {
+    background-color: #000000;
+    color: var(--cor-primaria);
+    border: 2px solid var(--cor-primaria);
+}
+
+/* Página do produto e calculadora (tinham fundos claros fixos) */
+body.alto-contraste .produto-tamanho-destaque,
+body.alto-contraste .card-calculadora,
+body.alto-contraste .calc-total-bloco,
+body.alto-contraste .opcional-item,
+body.alto-contraste .btn-qtd,
+body.alto-contraste .input-qtd,
+body.alto-contraste .campo-texto-personalizado {
+    background-color: #000000;
+    color: var(--cor-texto);
+    border-color: var(--cor-primaria);
+}
+body.alto-contraste .total-valor-destaque,
+body.alto-contraste .card-calculadora h3 {
+    color: var(--cor-primaria);
+}
+body.alto-contraste .btn-whatsapp-orcamento {
+    background-color: #00ff00;
+    color: #000000;
+}
+
+/* Botões do painel de acessibilidade */
+body.alto-contraste .btn-acessibilidade {
+    background-color: #000000;
+    color: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+body.alto-contraste .btn-acessibilidade:hover,
+body.alto-contraste .btn-acessibilidade:focus {
+    background-color: var(--cor-primaria);
+    color: #000000;
+}
+
+/* ---------- Botão de Alto Contraste: estado ligado/desligado ---------- */
+.btn-contraste::after {
+    content: " (desligado)";
+    font-weight: 400;
+}
+.btn-contraste[aria-pressed="true"]::after {
+    content: " (ligado)";
+}
+body.alto-contraste .btn-contraste[aria-pressed="true"] {
+    background-color: var(--cor-primaria);
+    color: #000000;
 }
