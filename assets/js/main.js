@@ -306,3 +306,89 @@ document.addEventListener('DOMContentLoaded', () => {
         agendarRecalculo();
     }
 });
+
+// ====================================================================
+// WIDGET FLUTUANTE DE ACESSIBILIDADE
+// Abre e fecha o painel com os botões A-, A, A+ e Alto Contraste.
+// (O funcionamento dos botões em si continua no código que já existia.)
+// ====================================================================
+
+// Espera a página carregar completamente antes de procurar os elementos
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Pega o botão redondo (♿) e o painel que abre ao clicar nele
+    var botao = document.getElementById('btn-abrir-acessibilidade');
+    var painel = document.getElementById('painel-acessibilidade');
+
+    // Se algum dos dois não existir na página, para por aqui
+    // (evita erro no console em páginas que não têm o widget)
+    if (!botao || !painel) return;
+
+    // ----------------------------------------------------------------
+    // Função que abre ou fecha o painel
+    // Recebe true para abrir e false para fechar
+    // ----------------------------------------------------------------
+    function abrir(abrirPainel) {
+        // O atributo "hidden" esconde o painel quando está true
+        painel.hidden = !abrirPainel;
+
+        // Avisa os leitores de tela se o painel está aberto ou fechado
+        botao.setAttribute('aria-expanded', abrirPainel);
+
+        // Atualiza o texto lido pelo leitor de tela conforme o estado
+        botao.setAttribute('aria-label',
+            abrirPainel ? 'Fechar ferramentas de acessibilidade' : 'Abrir ferramentas de acessibilidade');
+    }
+
+    // ----------------------------------------------------------------
+    // Clicar no botão ♿: se o painel está escondido, abre; senão, fecha
+    // ----------------------------------------------------------------
+    botao.addEventListener('click', function () {
+        abrir(painel.hidden);
+    });
+
+    // ----------------------------------------------------------------
+    // Tecla Esc: fecha o painel e devolve o foco ao botão ♿
+    // Importante para quem navega só pelo teclado
+    // ----------------------------------------------------------------
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !painel.hidden) {
+            abrir(false);
+            botao.focus();
+        }
+    });
+
+    // ----------------------------------------------------------------
+    // Clicar fora do painel: fecha o painel
+    // Ignora cliques dentro do painel e no próprio botão ♿
+    // ----------------------------------------------------------------
+    document.addEventListener('click', function (e) {
+        if (!painel.hidden && !painel.contains(e.target) && e.target !== botao) {
+            abrir(false);
+        }
+    });
+});
+
+// ====================================================================
+// ESTADO DO BOTÃO DE ALTO CONTRASTE (ligado / desligado)
+// Observa a classe "alto-contraste" no <body> e atualiza o botão.
+// Não depende de como o código antigo liga e desliga o contraste.
+// ====================================================================
+document.addEventListener('DOMContentLoaded', function () {
+
+    var botaoContraste = document.getElementById('btn-alto-contraste');
+    if (!botaoContraste) return;
+
+    // Lê se o contraste está ligado e avisa os leitores de tela (aria-pressed)
+    function sincronizarEstado() {
+        var ligado = document.body.classList.contains('alto-contraste');
+        botaoContraste.setAttribute('aria-pressed', ligado);
+    }
+
+    // Ajusta o estado assim que a página abre
+    sincronizarEstado();
+
+    // Sempre que o <body> mudar de classe, atualiza o botão
+    new MutationObserver(sincronizarEstado)
+        .observe(document.body, { attributes: true, attributeFilter: ['class'] });
+});
