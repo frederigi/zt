@@ -258,8 +258,6 @@ Acesse no seu navegador:
 | Regiane de Oliveira Gaspar | Araraquara |
 | Erica Gonçalves | Matão |
 | Jéssica Marina Goveia | São Carlos |
-| Leonardo Coelho Sanchez | Brotas |
-| Lucas Magno de Oliveira | Araraquara |
 
 ---
 
