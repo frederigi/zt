@@ -15,7 +15,16 @@ if (!isset($tituloPagina)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Catálogo digital de papelaria personalizada da Zebra de Touca: topos de bolo, lembrancinhas, caixas cenário e convites sob encomenda.">
+    <meta name="theme-color" content="#f7e8ed">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title><?= htmlspecialchars($tituloPagina) ?> - Zebra de Touca</title>
+
+    <!-- Metadados PWA do catálogo público -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/pwa/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/pwa/icon-192.png">
     
     <!-- Folha de estilo principal -->
     <link rel="stylesheet" href="assets/css/estilo.css">
