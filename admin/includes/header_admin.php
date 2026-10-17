@@ -15,7 +15,9 @@ $paginaAtual = basename($_SERVER['PHP_SELF']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7e8ed">
     <title><?= isset($tituloPagina) ? htmlspecialchars($tituloPagina) . ' - ' : '' ?>Painel da Artesã - Zebra de Touca</title>
+    <link rel="manifest" href="manifest.webmanifest">
     <!-- Folha de estilo propria do painel administrativo -->
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
@@ -53,6 +55,15 @@ $paginaAtual = basename($_SERVER['PHP_SELF']);
                         <a href="usuarios.php" class="<?= in_array($paginaAtual, ['usuarios.php', 'usuario_form.php']) ? 'ativo' : '' ?>">
                             👥 Usuários <span class="badge-superadmin">Admin</span>
                         </a>
+                    </li>
+                <?php endif; ?>
+
+                <!-- BOTAO DE INSTALACAO DO PAINEL (PWA) PARA ARTESÃ -->
+                <?php if (($usuarioAtual['perfil'] ?? '') === 'artesa'): ?>
+                    <li>
+                        <button type="button" id="instalar-painel" class="btn-admin btn-admin-secundario">
+                            📲 Instalar Painel
+                        </button>
                     </li>
                 <?php endif; ?>
 
