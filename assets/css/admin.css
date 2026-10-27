@@ -421,3 +421,10 @@ body {
     margin-top: 8px;
     color: var(--admin-primaria);
 }
+
+/* Oculta a opção de instalação quando o painel já está aberto como PWA. */
+@media (display-mode: standalone) {
+    #instalar-painel {
+        display: none !important;
+    }
+}
