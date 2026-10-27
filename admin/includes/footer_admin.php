@@ -5,7 +5,7 @@
         <p>Projeto Integrador II - UNIVESP</p>
     </footer>
 
-    //Script para o botão de instalação do painel
+    <!-- Script para o botão de instalação do painel -->
     <?php if (($usuarioAtual['perfil'] ?? '') === 'artesa'): ?>
         <p id="ajuda-instalacao-painel" role="status" aria-live="polite" style="text-align: center; padding: 0 16px 16px;"></p>
         <script>
