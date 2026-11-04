@@ -54,7 +54,7 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'excluir_foto' && isset($_GET['fot
     if ($fotoParaExcluir) {
         // Se a foto estiver salva na pasta uploads local, tenta apagar o arquivo do disco
         if (str_starts_with($fotoParaExcluir, '/uploads/')) {
-            $arquivoFisico = __DIR__ . '/../../public' . $fotoParaExcluir;
+            $arquivoFisico = __DIR__ . '/../public' . $fotoParaExcluir;
             if (file_exists($arquivoFisico)) {
                 @unlink($arquivoFisico);
             }
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['foto'])) {
             $msgErro = 'Formato inválido! Envie uma foto em JPG, PNG ou WEBP.';
         } else {
             $ext = $tiposAceitos[$mimeReal];
-            $pastaDestino = __DIR__ . '/../../public/uploads';
+            $pastaDestino = __DIR__ . '/../public/uploads';
 
             if (!is_dir($pastaDestino)) {
                 mkdir($pastaDestino, 0755, true);
